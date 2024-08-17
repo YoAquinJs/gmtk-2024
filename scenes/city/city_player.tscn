@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmdnqwmgd6cej"]
+
+[ext_resource type="Script" path="res://scripts/city/city_player.gd" id="1_vlcsj"]
+[ext_resource type="PackedScene" uid="uid://cljnwuw3c8o33" path="res://scenes/city/citizen.tscn" id="2_g5a78"]
+
+[node name="CityPlayer" type="Node2D"]
+script = ExtResource("1_vlcsj")
+
+[node name="citizen" parent="." instance=ExtResource("2_g5a78")]
+
+[connection signal="destroy" from="citizen" to="." method="_on_citizen_destroy"]

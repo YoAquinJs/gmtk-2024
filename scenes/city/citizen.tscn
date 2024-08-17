@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cljnwuw3c8o33"]
+
+[ext_resource type="Script" path="res://scripts/city/citizen.gd" id="1_fpj1r"]
+[ext_resource type="Texture2D" uid="uid://bo32wbn30axtv" path="res://icon.svg" id="1_x3mic"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4q8em"]
+
+[node name="citizen" type="CharacterBody2D"]
+script = ExtResource("1_fpj1r")
+speed = 300.0
+acceleration = 15.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_x3mic")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_4q8em")
