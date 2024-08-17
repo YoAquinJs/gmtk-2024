@@ -1,6 +1,77 @@
-[gd_scene load_steps=2 format=3 uid="uid://ccm11w8lfsgvg"]
+[gd_scene load_steps=6 format=3 uid="uid://ccm11w8lfsgvg"]
 
 [ext_resource type="Script" path="res://scripts/scene_manager.gd" id="1_l7k5x"]
 
+[sub_resource type="Animation" id="Animation_uffe6"]
+resource_name = "overlay_fadein"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OverlayLayer/Overlay:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_wury3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OverlayLayer/Overlay:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_twg2r"]
+resource_name = "overlay_fadeout"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OverlayLayer/Overlay:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f68y0"]
+_data = {
+"RESET": SubResource("Animation_wury3"),
+"overlay_fadein": SubResource("Animation_uffe6"),
+"overlay_fadeout": SubResource("Animation_twg2r")
+}
+
 [node name="SceneManager" type="Node"]
 script = ExtResource("1_l7k5x")
+
+[node name="OverlayLayer" type="CanvasLayer" parent="."]
+layer = 10
+
+[node name="Overlay" type="ColorRect" parent="OverlayLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="OverlayAnimator" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_f68y0")
+}
+
+[connection signal="animation_finished" from="OverlayAnimator" to="." method="_on_overlay_animator_animation_finished"]
