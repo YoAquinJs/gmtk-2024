@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="DecitionDeck" load_steps=3 format=3 uid="uid://8oo31qvmse8b"]
+
+[ext_resource type="Script" path="res://scripts/resources/decition.gd" id="1_cqwpj"]
+[ext_resource type="Script" path="res://scripts/resources/decition_deck.gd" id="2_e2co2"]
+
+[resource]
+script = ExtResource("2_e2co2")
+deck = Array[ExtResource("1_cqwpj")]([])
