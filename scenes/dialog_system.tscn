@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=3 uid="uid://cudup32a61qs2"]
+
+[ext_resource type="Script" path="res://scripts/systems/dialog_system.gd" id="1_7rxa5"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_i5iyd"]
+font_size = 20
+
+[node name="DialogSystem" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7rxa5")
+type_speed = 0.1
+
+[node name="label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 73.0
+offset_top = -23.0
+offset_right = -44.0
+grow_horizontal = 2
+grow_vertical = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="skiplabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = -31.0
+offset_right = 66.0
+offset_bottom = -3.0
+grow_vertical = 0
+text = "skip [] "
+label_settings = SubResource("LabelSettings_i5iyd")
+
+[node name="timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="timer" to="." method="_on_timer_timeout"]
