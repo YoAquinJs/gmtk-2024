@@ -4,13 +4,15 @@
 [ext_resource type="Script" path="res://scripts/scene.gd" id="1_qlf25"]
 [ext_resource type="PackedScene" uid="uid://bu3f6xgvhdvtb" path="res://scenes/city/citizen_despawner.tscn" id="3_ajkx2"]
 
-[node name="CitizenStage" type="Node2D"]
+[node name="City" type="Node2D"]
 script = ExtResource("1_qlf25")
-scene_id = 2
+scene_id = 3
 
 [node name="CityPlayer" parent="." node_paths=PackedStringArray("scene") instance=ExtResource("1_pxuy0")]
-position = Vector2(72, 329)
+position = Vector2(72, 0)
 scene = NodePath("..")
 
 [node name="CitizenDespawner" parent="." instance=ExtResource("3_ajkx2")]
-position = Vector2(273, 335)
+position = Vector2(295, 2)
+
+[node name="Camera2D" type="Camera2D" parent="."]

@@ -75,6 +75,4 @@ libraries = {
 "": SubResource("AnimationLibrary_f68y0")
 }
 
-[node name="Camera2D" type="Camera2D" parent="."]
-
 [connection signal="animation_finished" from="OverlayAnimator" to="." method="_on_overlay_animator_animation_finished"]

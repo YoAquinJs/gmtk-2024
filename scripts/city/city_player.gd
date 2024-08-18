@@ -4,6 +4,8 @@ extends Node2D
 @export var scene : Scene
 
 func _process(_delta: float) -> void:
+    if not is_instance_valid(citizen):
+        return
     citizen.direction.x = Input.get_axis("left", "right")
     citizen.direction.y = Input.get_axis("up", "down")
 

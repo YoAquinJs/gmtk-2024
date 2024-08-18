@@ -8,10 +8,10 @@ enum SceneId {
     RADIO_TRANSITION,
 }
 
-const preloaded_scenes: Dictionary = {
-    SceneId.COMIC            : preload("res://scenes/comic.tscn"),
-    SceneId.START_MENU       : preload("res://scenes/main.tscn"),
-    SceneId.HAND             : preload("res://scenes/hand.tscn"),
-    SceneId.CITY             : preload("res://scenes/city.tscn"),
-    SceneId.RADIO_TRANSITION : preload("res://scenes/radio.tscn"),
+const resource_scenes: Dictionary = {
+    SceneId.COMIC            : "res://scenes/comic.tscn",
+    SceneId.START_MENU       : "res://scenes/main.tscn",
+    SceneId.HAND             : "res://scenes/hand.tscn",
+    SceneId.CITY             : "res://scenes/city.tscn",
+    SceneId.RADIO_TRANSITION : "res://scenes/radio.tscn",
 }
