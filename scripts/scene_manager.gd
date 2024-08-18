@@ -1,10 +1,12 @@
-extends Node2D
+class_name SceneManager
+
+extends Node
 
 @export var default_scene : Globals.SceneId
 
 var current_scene: Scene = null
 var switch_queue: Array[Globals.SceneId] = []
-@onready var anim = $OverlayAnimator
+@onready var anim = $"OverlayAnimator"
 
 func _ready() -> void:
     _instance_scene(default_scene)
@@ -17,15 +19,14 @@ func _instance_scene(scene_id: Globals.SceneId) -> void:
         current_scene.free_scene()
 
     current_scene = Globals.preloaded_scenes[scene_id].instantiate()
-    current_scene.switch_scene.connect(_on_scene_switch)
+    current_scene.scene_manager = self
     add_child(current_scene)
 
-func _on_scene_switch(scenes: Array[Globals.SceneId]) -> void:
+func switch(scenes: Array[Globals.SceneId]) -> void:
     anim.play("overlay_fadein")
     switch_queue.append_array(scenes)
-    _instance_scene(switch_queue.pop_front())
-
 
 func _on_overlay_animator_animation_finished(anim_name: StringName) -> void:
     if anim_name == "overlay_fadein":
+        _instance_scene(switch_queue.pop_front())
         anim.play("overlay_fadeout")

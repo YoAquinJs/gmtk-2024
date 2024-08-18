@@ -9,9 +9,6 @@ func _ready() -> void:
     var timer: Timer = $Timer
     timer.wait_time = spawn_freq
 
-# func _process(delta: float) -> void:
-#     pass
-
 func instance_citizen():
     var instance: Citizen = citizen.instantiate()
     instance.position = position

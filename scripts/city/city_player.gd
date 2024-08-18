@@ -1,6 +1,7 @@
 extends Node2D
 
-@onready var citizen: Citizen =$citizen
+@onready var citizen: Citizen =$"citizen"
+@export var scene : Scene
 
 func _process(_delta: float) -> void:
     citizen.direction.x = Input.get_axis("left", "right")
@@ -8,4 +9,4 @@ func _process(_delta: float) -> void:
 
 # Handle end of city stage
 func _on_citizen_destroy() -> void:
-    pass
+    scene.scene_manager.switch([Globals.SceneId.RADIO_TRANSITION, Globals.SceneId.HAND])
