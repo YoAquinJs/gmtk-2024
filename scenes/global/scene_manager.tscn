@@ -1,13 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://ccm11w8lfsgvg"]
+[gd_scene load_steps=7 format=3 uid="uid://ccm11w8lfsgvg"]
 
 [ext_resource type="Script" path="res://scripts/systems/scene_manager.gd" id="1_aplts"]
+[ext_resource type="PackedScene" uid="uid://cudup32a61qs2" path="res://scenes/global/dialog_system.tscn" id="2_hop17"]
 
 [sub_resource type="Animation" id="Animation_wury3"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("OverlayLayer/Overlay:color")
+tracks/0/path = NodePath("Overlay/OverlayLayer/Overlay:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -22,7 +23,7 @@ resource_name = "overlay_fadein"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("OverlayLayer/Overlay:color")
+tracks/0/path = NodePath("Overlay/OverlayLayer/Overlay:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -37,7 +38,7 @@ resource_name = "overlay_fadeout"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("OverlayLayer/Overlay:color")
+tracks/0/path = NodePath("Overlay/OverlayLayer/Overlay:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -58,10 +59,12 @@ _data = {
 script = ExtResource("1_aplts")
 default_scene = 3
 
-[node name="OverlayLayer" type="CanvasLayer" parent="."]
+[node name="Overlay" type="Node" parent="."]
+
+[node name="OverlayLayer" type="CanvasLayer" parent="Overlay"]
 layer = 10
 
-[node name="Overlay" type="ColorRect" parent="OverlayLayer"]
+[node name="Overlay" type="ColorRect" parent="Overlay/OverlayLayer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -70,9 +73,12 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
-[node name="OverlayAnimator" type="AnimationPlayer" parent="."]
+[node name="OverlayAnimator" type="AnimationPlayer" parent="Overlay"]
+root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_f68y0")
 }
 
-[connection signal="animation_finished" from="OverlayAnimator" to="." method="_on_overlay_animator_animation_finished"]
+[node name="DialogSystem" parent="." instance=ExtResource("2_hop17")]
+
+[connection signal="animation_finished" from="Overlay/OverlayAnimator" to="." method="_on_overlay_animator_animation_finished"]

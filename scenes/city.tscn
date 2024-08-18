@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cpr8vxif6fjna"]
 
 [ext_resource type="PackedScene" uid="uid://bmdnqwmgd6cej" path="res://scenes/city/city_player.tscn" id="1_pxuy0"]
-[ext_resource type="Script" path="res://scripts/scene.gd" id="1_qlf25"]
+[ext_resource type="Script" path="res://scripts/systems/scene.gd" id="1_qlf25"]
 [ext_resource type="PackedScene" uid="uid://bu3f6xgvhdvtb" path="res://scenes/city/citizen_despawner.tscn" id="3_ajkx2"]
 
 [node name="City" type="Node2D"]

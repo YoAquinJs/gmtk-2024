@@ -15,3 +15,9 @@ const resource_scenes: Dictionary = {
     SceneId.CITY             : "res://scenes/city.tscn",
     SceneId.RADIO_TRANSITION : "res://scenes/radio.tscn",
 }
+
+enum District {
+    NULL,
+    ALPHA,
+    BETHA
+}

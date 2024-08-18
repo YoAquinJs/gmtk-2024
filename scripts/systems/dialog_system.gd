@@ -25,7 +25,6 @@ class Dialog:
         return _step == stream_size
 
 signal dequeued_dialog
-# dequeued_dialog.connect(skip_dialog)
 
 @onready var label: Label = $"label"
 @onready var skip_label: Label = $"skiplabel"
@@ -36,8 +35,10 @@ var queue : Array[Dialog] = []
 var curr_dialog : Dialog = null
 
 func _ready() -> void:
-    # singleton
-    GameManager.dialog_system = self
+    if Singletons.dialog_system:
+        print("multiple dialog system")
+        queue_free()
+    Singletons.dialog_system = self
 
     timer.wait_time = type_speed
 
@@ -46,6 +47,8 @@ func _ready() -> void:
     skip_label.text = "Skip ({0})".format([skip_dialog_key])
     skip_label.hide()
     label.text = ""
+
+    dequeued_dialog.connect(_on_dequeued_dialog)
 
 func _process(_delta: float) -> void:
     if curr_dialog and curr_dialog.user_skipable:
@@ -72,14 +75,16 @@ func skip_dialog() -> void:
         skip_label.hide()
 
     curr_dialog = null
-    timer.stop()
     label.text = ""
     dequeued_dialog.emit()
+
+func _on_dequeued_dialog() -> void:
+    timer.stop()
 
 func _on_timer_timeout() -> void:
     label.text += curr_dialog.next()
     if curr_dialog.empty():
-        timer.stop()
         dequeued_dialog.emit()
+        return
 
     label.text += " "

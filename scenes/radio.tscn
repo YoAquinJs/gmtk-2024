@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c5g63bq7xjp12"]
 
-[ext_resource type="Script" path="res://scripts/scene.gd" id="1_a66a6"]
+[ext_resource type="Script" path="res://scripts/systems/scene.gd" id="1_a66a6"]
 
 [node name="RadioTransition" type="Node2D"]
 script = ExtResource("1_a66a6")

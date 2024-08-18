@@ -11,14 +11,14 @@ config_version=5
 [application]
 
 config/name="gmtk"
-run/main_scene="res://scenes/scene_manager.tscn"
+run/main_scene="res://scenes/global/scene_manager.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
-GameManager="*res://scripts/global/game_manager.gd"
 Globals="*res://scripts/global/globals.gd"
+Singletons="*res://scripts/global/singletons.gd"
 
 [input]
 

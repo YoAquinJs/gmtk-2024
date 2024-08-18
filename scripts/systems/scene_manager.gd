@@ -4,8 +4,8 @@ extends Node
 
 @export var default_scene : Globals.SceneId
 
-@onready var anim = $"OverlayAnimator"
-@onready var overlay = $"OverlayLayer/Overlay"
+@onready var anim: AnimationPlayer = $"Overlay/OverlayAnimator"
+@onready var overlay: ColorRect = $"Overlay/OverlayLayer/Overlay"
 
 var current_scene: Scene = null
 var switch_queue: Array[Globals.SceneId] = []
