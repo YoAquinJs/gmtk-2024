@@ -1,7 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://c5g63bq7xjp12"]
+[gd_scene load_steps=7 format=3 uid="uid://c5g63bq7xjp12"]
 
-[ext_resource type="Script" path="res://scripts/systems/scene.gd" id="1_a66a6"]
-[ext_resource type="Script" path="res://scripts/radio/logic.gd" id="2_o2ht8"]
+[ext_resource type="Script" path="res://scripts/scenes/radio.gd" id="2_o2ht8"]
 [ext_resource type="Texture2D" uid="uid://c484ix13f0eoh" path="res://sprites/radio/radio.png" id="3_g2jvr"]
 [ext_resource type="FontFile" uid="uid://du3nhlklm71gd" path="res://fonts/netron.ttf" id="4_k621r"]
 
@@ -27,14 +26,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_a66a6")
-scene_id = 4
-
-[node name="radio_logic" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
 script = ExtResource("2_o2ht8")
+scene_id = 4
 
 [node name="Panel" type="Panel" parent="."]
 z_index = -10
