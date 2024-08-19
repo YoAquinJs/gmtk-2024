@@ -1,7 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://8pvsl818npe3"]
+[gd_scene load_steps=3 format=3 uid="uid://8pvsl818npe3"]
 
 [ext_resource type="Script" path="res://scripts/systems/game_manager.gd" id="1_iumtx"]
+[ext_resource type="Resource" uid="uid://8oo31qvmse8b" path="res://decitions.tres" id="2_s2p7n"]
 
 [node name="GameManager" type="Node"]
 script = ExtResource("1_iumtx")
-num_decitions = 15
+num_decitions = 1
+_decition_deck = ExtResource("2_s2p7n")

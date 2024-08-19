@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://ccm11w8lfsgvg"]
+[gd_scene load_steps=6 format=3 uid="uid://ccm11w8lfsgvg"]
 
-[ext_resource type="Script" path="res://scripts/systems/scene_manager.gd" id="1_aplts"]
-[ext_resource type="PackedScene" uid="uid://cudup32a61qs2" path="res://scenes/global/dialog_system.tscn" id="2_hop17"]
+[ext_resource type="Script" path="res://scripts/systems/scene_manager.gd" id="1_p4ncy"]
 
 [sub_resource type="Animation" id="Animation_wury3"]
 length = 0.001
@@ -56,8 +55,7 @@ _data = {
 }
 
 [node name="SceneManager" type="Node"]
-script = ExtResource("1_aplts")
-default_scene = 3
+script = ExtResource("1_p4ncy")
 
 [node name="Overlay" type="Node" parent="."]
 
@@ -78,7 +76,5 @@ root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_f68y0")
 }
-
-[node name="DialogSystem" parent="." instance=ExtResource("2_hop17")]
 
 [connection signal="animation_finished" from="Overlay/OverlayAnimator" to="." method="_on_overlay_animator_animation_finished"]
