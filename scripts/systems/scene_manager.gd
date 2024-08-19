@@ -27,7 +27,7 @@ func _instance_scene(scene_id: Globals.SceneId) -> void:
 
     add_child(current_scene)
 
-func switch(scenes: Array[Globals.SceneId]) -> void:
+func switch(scenes: Array[Globals.SceneId] = []) -> void:
     anim.play("overlay_fadein")
     switch_queue.append_array(scenes)
     # for scene in scenes:

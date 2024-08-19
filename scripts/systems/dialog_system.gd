@@ -35,10 +35,10 @@ var queue : Array[Dialog] = []
 var curr_dialog : Dialog = null
 
 func _ready() -> void:
-    if Singletons.dialog_system:
+    if Singletons.dialog_system != self:
         print("multiple dialog system")
         queue_free()
-    Singletons.dialog_system = self
+    # Singletons.dialog_system = self
 
     timer.wait_time = type_speed
 

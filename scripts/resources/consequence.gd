@@ -3,10 +3,25 @@ class_name Consequence
 extends Resource
 
 enum ConsequenceType {
+    NONE,
     HEALTH,
     SECURITY,
     ECONOMY,
 }
+
+static func consequence_str(type: ConsequenceType) -> String:
+    var parsed : String
+    match type:
+        ConsequenceType.HEALTH:
+            parsed = "Health"
+        ConsequenceType.SECURITY:
+            parsed = "Security"
+        ConsequenceType.ECONOMY:
+            parsed = "Economy"
+        ConsequenceType.NONE, _:
+            push_warning("invalid consequence type conversion")
+            parsed = "Invalid"
+    return parsed
 
 @export var stat_change : Dictionary = {
     ConsequenceType.HEALTH   : 0,
@@ -15,7 +30,10 @@ enum ConsequenceType {
     }:
     get: return stat_change
 
-@export var affected_district : Globals.District:
-    get: return affected_district
+@export var citizen_news : String
+@export_range(1, 100, 10) var strenght : int:
+    get: return strenght
 @export var district_consequence : ConsequenceType:
     get: return district_consequence
+@export var affected_district : Globals.District:
+    get: return affected_district

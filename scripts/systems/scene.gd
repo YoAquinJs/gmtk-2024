@@ -1,6 +1,6 @@
 class_name Scene
 
-extends Node2D
+extends Node
 
 signal freeing
 

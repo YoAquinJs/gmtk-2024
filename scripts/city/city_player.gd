@@ -11,4 +11,4 @@ func _process(_delta: float) -> void:
 
 # Handle end of city stage
 func _on_citizen_destroy() -> void:
-    scene.scene_manager.switch([Globals.SceneId.RADIO_TRANSITION, Globals.SceneId.HAND])
+    scene.scene_manager.switch([Globals.SceneId.RADIO_TRANSITION, Globals.SceneId.HAND]) # CHANGE TO manager
