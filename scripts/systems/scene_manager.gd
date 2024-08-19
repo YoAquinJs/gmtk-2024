@@ -28,8 +28,12 @@ func _instance_scene(scene_id: Globals.SceneId) -> void:
     add_child(current_scene)
 
 func switch(scenes: Array[Globals.SceneId] = []) -> void:
-    anim.play("overlay_fadein")
     switch_queue.append_array(scenes)
+    if len(switch_queue) == 0:
+        push_warning("no scene to switch to")
+        return
+
+    anim.play("overlay_fadein")
     # for scene in scenes:
     #     loaded_scenes[scene] = load(Globals.resource_scenes[scene])
 

@@ -13,11 +13,11 @@ static func consequence_str(type: ConsequenceType) -> String:
     var parsed : String
     match type:
         ConsequenceType.HEALTH:
-            parsed = "Health"
+            parsed = "HEALTH"
         ConsequenceType.SECURITY:
-            parsed = "Security"
+            parsed = "SECURITY"
         ConsequenceType.ECONOMY:
-            parsed = "Economy"
+            parsed = "ECONOMY"
         ConsequenceType.NONE, _:
             push_warning("invalid consequence type conversion")
             parsed = "Invalid"
