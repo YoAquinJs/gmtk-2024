@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://bj3p1xct1doj8"]
+
+[ext_resource type="Script" path="res://scripts/scenes/start_menu.gd" id="1_hq3pw"]
+[ext_resource type="FontFile" uid="uid://du3nhlklm71gd" path="res://fonts/netron.ttf" id="2_6oj8c"]
+[ext_resource type="Texture2D" uid="uid://c484ix13f0eoh" path="res://sprites/radio/radio.png" id="2_dmume"]
+
+[node name="StartMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hq3pw")
+scene_id = 1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_dmume")
+expand_mode = 3
+
+[node name="StartButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -15.5
+offset_right = 48.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_6oj8c")
+theme_override_font_sizes/font_size = 70
+text = "Start Game"
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]

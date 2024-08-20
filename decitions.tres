@@ -1,8 +1,43 @@
-[gd_resource type="Resource" script_class="DecitionDeck" load_steps=3 format=3 uid="uid://8oo31qvmse8b"]
+[gd_resource type="Resource" script_class="DecitionDeck" load_steps=8 format=3 uid="uid://8oo31qvmse8b"]
 
 [ext_resource type="Script" path="res://scripts/resources/decition.gd" id="1_cqwpj"]
+[ext_resource type="Script" path="res://scripts/resources/consequence.gd" id="2_b8ryh"]
 [ext_resource type="Script" path="res://scripts/resources/decition_deck.gd" id="2_e2co2"]
+
+[sub_resource type="Resource" id="Resource_m3inf"]
+script = ExtResource("2_b8ryh")
+stat_change = {
+1: 0,
+2: 0,
+3: 0
+}
+citizen_news = "estan matando ninos por dinero"
+strenght = 100
+district_consequence = 2
+affected_district = 1
+
+[sub_resource type="Resource" id="Resource_luv30"]
+script = ExtResource("2_b8ryh")
+stat_change = {
+1: 0,
+2: 0,
+3: 0
+}
+citizen_news = "rechazan iniciativa de sacrificio infantil"
+strenght = 11
+district_consequence = 3
+affected_district = 2
+
+[sub_resource type="Resource" id="Resource_ucn45"]
+script = ExtResource("1_cqwpj")
+prompt = "matar ninos por dinero"
+accepted = SubResource("Resource_m3inf")
+declined = SubResource("Resource_luv30")
+
+[sub_resource type="Resource" id="Resource_6klx0"]
+script = ExtResource("1_cqwpj")
+prompt = ""
 
 [resource]
 script = ExtResource("2_e2co2")
-deck = Array[ExtResource("1_cqwpj")]([])
+deck = Array[ExtResource("1_cqwpj")]([SubResource("Resource_ucn45"), SubResource("Resource_6klx0")])

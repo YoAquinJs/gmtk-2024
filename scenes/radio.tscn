@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://c5g63bq7xjp12"]
+[gd_scene load_steps=8 format=3 uid="uid://c5g63bq7xjp12"]
 
 [ext_resource type="Script" path="res://scripts/scenes/radio.gd" id="2_o2ht8"]
 [ext_resource type="Texture2D" uid="uid://c484ix13f0eoh" path="res://sprites/radio/radio.png" id="3_g2jvr"]
 [ext_resource type="FontFile" uid="uid://du3nhlklm71gd" path="res://fonts/netron.ttf" id="4_k621r"]
+[ext_resource type="Texture2D" uid="uid://mrgf7lbdtkk5" path="res://sprites/darkness_effect.png" id="4_wvio1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h8mfo"]
 bg_color = Color(0.403998, 0.297993, 0.850996, 1)
@@ -83,3 +84,19 @@ offset_bottom = 15.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_7rrsl")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -80.0
+offset_right = -1153.25
+offset_bottom = -688.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(20.2, 20.2)
+mouse_filter = 2
+texture = ExtResource("4_wvio1")
+expand_mode = 3
