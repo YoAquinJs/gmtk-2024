@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://do8d4cpy76jgo"]
+[gd_scene load_steps=13 format=3 uid="uid://do8d4cpy76jgo"]
 
 [ext_resource type="Script" path="res://scripts/scenes/comic.gd" id="1_ttcxs"]
 [ext_resource type="Script" path="res://scripts/resources/vignette_dialogues.gd" id="2_12rtb"]
@@ -22,6 +22,56 @@ value = Array[String](["dialogue security"])
 script = ExtResource("2_12rtb")
 value = Array[String](["dialogue economy"])
 
+[sub_resource type="Animation" id="Animation_r4ow6"]
+resource_name = "transition"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Overlay:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.533333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"next_vignette"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_x8aiq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Overlay:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uajy6"]
+_data = {
+"RESET": SubResource("Animation_x8aiq"),
+"transition": SubResource("Animation_r4ow6")
+}
+
 [node name="Comic" type="Control" node_paths=PackedStringArray("vignette_images")]
 layout_mode = 3
 anchors_preset = 15
@@ -34,6 +84,30 @@ delay = 2
 vignette_dialogs = Array[ExtResource("2_12rtb")]([SubResource("Resource_n66ow"), SubResource("Resource_fokby"), SubResource("Resource_4epcb"), SubResource("Resource_obj7g")])
 vignette_images = [null, NodePath("HealthVignette"), NodePath("SecurityVignette"), NodePath("EconomyVignette")]
 scene_id = null
+
+[node name="VignetteTransition" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Overlay" type="ColorRect" parent="VignetteTransition"]
+z_index = 10
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="VignetteTransition"]
+libraries = {
+"": SubResource("AnimationLibrary_uajy6")
+}
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true

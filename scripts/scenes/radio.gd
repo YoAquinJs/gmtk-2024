@@ -16,7 +16,7 @@ func _ready() -> void:
 func report(content: Array[String]) -> void:
     _dialogs = len(content)
     for new in content:
-        Singletons.dialogue_system.enqueue_dialog(DialogSystem.Dialog.new(new, true))
+        Singletons.dialogue_system.enqueue_dialog(DialogueSystem.Dialog.new(new, true))
 
 func _on_dequeued_dialog() -> void:
     _dialogs -= 1
