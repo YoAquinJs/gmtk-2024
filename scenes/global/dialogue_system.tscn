@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=4 uid="uid://cudup32a61qs2"]
 
-[ext_resource type="Script" path="res://scripts/systems/dialog_system.gd" id="1_7rxa5"]
+[ext_resource type="Script" path="res://scripts/systems/dialogue_system.gd" id="1_7rxa5"]
 [ext_resource type="FontFile" uid="uid://du3nhlklm71gd" path="res://fonts/netron.ttf" id="2_ettdj"]
 
 [sub_resource type="Image" id="Image_v5mvo"]

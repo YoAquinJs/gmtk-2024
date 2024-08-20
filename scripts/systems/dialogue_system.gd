@@ -35,10 +35,9 @@ var queue : Array[Dialog] = []
 var curr_dialog : Dialog = null
 
 func _ready() -> void:
-    if Singletons.dialog_system != self:
+    if Singletons.dialogue_system != self:
         print("multiple dialog system")
         queue_free()
-    # Singletons.dialog_system = self
 
     timer.wait_time = type_speed
 
@@ -47,8 +46,6 @@ func _ready() -> void:
     skip_label.text = "Skip ({0})".format([skip_dialog_key])
     skip_label.hide()
     label.text = ""
-
-    dequeued_dialog.connect(_on_dequeued_dialog)
 
 func _process(_delta: float) -> void:
     if curr_dialog and curr_dialog.user_skipable:
@@ -76,15 +73,15 @@ func skip_dialog() -> void:
 
     curr_dialog = null
     label.text = ""
-    dequeued_dialog.emit()
-
-func _on_dequeued_dialog() -> void:
     timer.stop()
+    dequeued_dialog.emit()
 
 func _on_timer_timeout() -> void:
     label.text += curr_dialog.next()
     if curr_dialog.empty():
-        dequeued_dialog.emit()
+        timer.stop()
+        if not curr_dialog.user_skipable:
+            dequeued_dialog.emit()
         return
 
     label.text += " "

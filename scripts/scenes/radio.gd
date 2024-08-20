@@ -3,7 +3,7 @@ class_name radio extends Scene
 var _dialogs : int
 
 func _ready() -> void:
-    Singletons.dialog_system.dequeued_dialog.connect(_on_dequeued_dialog)
+    Singletons.dialogue_system.dequeued_dialog.connect(_on_dequeued_dialog)
 
     match Singletons.game_manager.stage:
         GameManager.Stage.INTRODUCTION:
@@ -16,7 +16,7 @@ func _ready() -> void:
 func report(content: Array[String]) -> void:
     _dialogs = len(content)
     for new in content:
-        Singletons.dialog_system.enqueue_dialog(DialogSystem.Dialog.new(new, true))
+        Singletons.dialogue_system.enqueue_dialog(DialogSystem.Dialog.new(new, true))
 
 func _on_dequeued_dialog() -> void:
     _dialogs -= 1
